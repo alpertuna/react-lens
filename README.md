@@ -3,8 +3,26 @@ Angular like simple and quick data filter / formatter to show for React.
 
 react-lens is under development now, It is time to contribute :blush:
 
-Demo
-====
+Table of Content
+================
+- [Demos](#demos)
+- [Install](#install)
+- [Usage / Example](#usage--example)
+- [Properties](#properties)
+- [Built-in Lenses (Filters)](#built-in-lenses-filters)
+- [Making New Lenses (Filters)](#making-new-lenses-filters)
+  - [Importing make](#importing-make)
+  - [make Function Interface](#make-function-interface)
+  - [renderer Callback Interface](#renderer-callback-interface)
+  - [An Example to Create Lens - repeater](#an-example-to-create-lens---repeater)
+- [Development / Contributing](#development--contributing)
+  - [Folders and Files](#folders-and-files)
+  - [To run dev server,](#to-run-dev-server)
+  - [Source Code Writing Standarts](#source-code-writing-standarts)
+  - [Other Scripts](#other-scripts)
+
+Demos
+=====
 Here is a simple demo for collections of built-in lenses. [Go to demo page](https://alpertuna.github.io/react-lens/).
 
 Install
@@ -15,7 +33,7 @@ npm install react-lens
 ```
 
 Usage / Example
-=============
+===============
 
 With Ecma Script 6 and React Loaders
 ```javascript
@@ -64,7 +82,7 @@ Built-in Lenses (Filters)
 
 Making New Lenses (Filters)
 ===========================
-If you don't like read documentation, you can jump directly to [An Example to Create Lens - repeater](#an-example-to-create-lens-repeater-).
+If you don't like read documentation, you can jump directly to [An Example to Create Lens - repeater](#an-example-to-create-lens---repeater).
 
 Or you can look into [src/lenses](https://github.com/alpertuna/react-lens/tree/master/src/lenses) - built-in lenses.
 
@@ -87,9 +105,7 @@ import { make } from 'react-lens';
 > **rendererCallbackFunction** (content: &lt;**inputType**&gt;, param1: string, param2: string ,...): string | number | React.Component | Array&lt;React.Component&gt;
 
 - `content` is content to filter / format given as child through `<Lens />`.
-- Other repeatable parameters comes from `filter` props of `<Lens />`.
-
-  For example;
+- Other repeatable parameters comes from `filter` props of `<Lens />`. For example;
   ```javascript
   <Lens filter="yourfilter : param1 : param2">{content}</Lens>
   ```
@@ -102,13 +118,13 @@ Let's make a filter that repeats given content given param times.
 // File: lens-repeater.js
 import { make } from 'react-lens';
 
-make('repeater', 'string', (content, times = 2) => (
+make('repeater', 'string', (content, times = 2) => {
   let result = '';
   for(let i = 0; i < times; i++) {
     result += content;
   }
   return result;
-));
+});
 ```
 ```javascript
 // File: example.js
@@ -159,7 +175,7 @@ Dev server uses webpack and it has hot modul replecament plugins, so when you ch
 #### Source Code Writing Standarts
 For source code quality, I applied Airbnb rules.
 
-#### Other scripts,
+#### Other Scripts
 ```sh
 # Builds js dist file
 npm run build-dist-js
