@@ -22,9 +22,15 @@ const Lens = props => {
     props.filter.replace(/\s/g, '').split('|').forEach(filter => {
       const parameters = filter.split(':');
       const lens = parameters[0];
+
+      if (typeof lenses[lens] === 'undefined') {
+        throw new Error(`Lens "${lens}" is not found.`);
+      }
+
       const inputType = lenses[lens].inputType;
       const instanceOf = lenses[lens].instanceOf;
       parameters[0] = content;
+
       if (typeof content === inputType) {
         if (instanceOf === null || content instanceof instanceOf) {
           content = lenses[lens].renderer.apply(null, parameters);

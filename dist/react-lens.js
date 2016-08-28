@@ -158,9 +158,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    props.filter.replace(/\s/g, '').split('|').forEach(function (filter) {
 	      var parameters = filter.split(':');
 	      var lens = parameters[0];
+
+	      if (typeof lenses[lens] === 'undefined') {
+	        throw new Error('Lens "' + lens + '" is not found.');
+	      }
+
 	      var inputType = lenses[lens].inputType;
 	      var instanceOf = lenses[lens].instanceOf;
 	      parameters[0] = content;
+
 	      if ((typeof content === 'undefined' ? 'undefined' : _typeof(content)) === inputType) {
 	        if (instanceOf === null || content instanceof instanceOf) {
 	          content = lenses[lens].renderer.apply(null, parameters);
