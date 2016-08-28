@@ -7,7 +7,9 @@
 # react-lens
 Angular like simple and quick data filter / formatter to show for React.
 
-react-lens is under development now, It is time to contribute :blush:
+> `react-lens` is under development now, It is time to contribute :blush:.
+>
+> If you have created your own lens and you think it is useful that should be built-in lens, then open pull-request now :zap:.
 
 Table of Content
 ================
@@ -88,7 +90,7 @@ Built-in Lenses (Filters)
 
 Making New Lenses (Filters)
 ===========================
-If you don't like read documentation, you can jump directly to [An Example to Create Lens - repeater](#an-example-to-create-lens---repeater).
+You can jump directly to [An Example to Create Lens - repeater](#an-example-to-create-lens---repeater) instead of reading API.
 
 Or you can look into [src/lenses](https://github.com/alpertuna/react-lens/tree/master/src/lenses) - built-in lenses.
 
@@ -112,6 +114,7 @@ import { make } from 'react-lens';
 
 - `content` is content to filter / format given as child through `<Lens />`.
 - Other repeatable parameters comes from `filter` props of `<Lens />`. For example;
+
   ```javascript
   <Lens filter="yourfilter : param1 : param2">{content}</Lens>
   ```
