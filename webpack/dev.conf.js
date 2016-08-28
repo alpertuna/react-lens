@@ -9,7 +9,9 @@ const config = require('./base.conf');
 // Webpack Development Settings
 module.exports = Object.assign(config, {
   entry: './demo/App.jsx',
-  output: 'bundle.js',
+  output: {
+    filename: 'bundle.js',
+  },
   devtool: 'eval-source-map',
   devServer: {
     contentBase: 'demo',
