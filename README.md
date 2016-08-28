@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/alpertuna/react-lens.svg?branch=master)](https://travis-ci.org/alpertuna/react-lens)
+[![dependencies Status](https://david-dm.org/alpertuna/react-lens/status.svg)](https://david-dm.org/alpertuna/react-lens)
+[![peerDependencies Status](https://david-dm.org/alpertuna/react-lens/peer-status.svg)](https://david-dm.org/alpertuna/react-lens?type=peer)
+
+[![NPM](https://nodei.co/npm/react-lens.png?compact=true)](https://nodei.co/npm/react-lens/)
+
 # react-lens
 Angular like simple and quick data filter / formatter to show for React.
 
