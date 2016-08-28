@@ -1,6 +1,6 @@
 {
   "name": "react-lens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular like simple and quick data filter / formatter to show for React.",
   "keywords": [
     "react",
