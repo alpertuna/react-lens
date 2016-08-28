@@ -5,7 +5,7 @@ react-lens is under development now, It is time to contribute :blush:
 
 Demo
 ====
-Here is a simple demo for collections of built-in lenses. [Go To Demo](https://alpertuna.github.io/react-lens/)
+Here is a simple demo for collections of built-in lenses. [Go to demo page](https://alpertuna.github.io/react-lens/).
 
 Install
 =======
@@ -35,14 +35,99 @@ ReactDOM.render(<Example />, document.getElementById('dom_id'));
 It will print `$ 5.20` without any customizations.
 For more examples [go to demo page](https://alpertuna.github.io/react-lens/).
 
-Build-in Lenses (Filters)
+Properties
+==========
+- `container` specifies return element tag of `<Lens />`. Default is `span`.
+- `filter` selects which lens will be used to filter / format given value.
+
+Built-in Lenses (Filters)
 =========================
-- `currency` Formats number to show as currency
-- `date` Formats date
+- `currency` Formats number to show as currency. Parameters;
+  1.  Currency symbol. Default is `$`.
+  2.  Specifies number of decimals. Default is `2`.
+  3.  Direction of currency symbol. Options are `R` and `L`. Default is `L`.
+
+
+- `date` Formats date. Parameters;
+  1. Date format. For formatting [dateformat](https://www.npmjs.com/package/dateformat) npm package is used. Default is `dd.mm.yyyy`.
+
+
 - `json` Stringifies objects
+
 - `lowercase` Makes string lower case
+
 - `uppercase` Makes string upper case
-- `foreach` Divides given array in to elements
+
+- `foreach` Divides given array in to elements. Parameters;
+  1. Child element tag.
+
+
+Making New Lenses (Filters)
+===========================
+If you don't like read documentation, you can jump directly to [An Example to Create Lens - repeater](#an-example-to-create-lens-repeater-).
+
+Or you can look into [src/lenses](https://github.com/alpertuna/react-lens/tree/master/src/lenses) - built-in lenses.
+
+### Importing `make`
+
+```javascript
+import { make } from 'react-lens';
+```
+
+### `make` Function Interface
+
+> make (lensName: string, **inputType**: string, **rendererCallbackFunction**: function): void
+
+- `lensName` is lens / filter name to use as `filter` props of `<Lens />` instance.
+- `inputType` is type of child that will be given through `<Lens />`.
+- `renderer` is called when that filter is used and the child is given as parameter.
+
+### `renderer` Callback Interface
+
+> **rendererCallbackFunction** (content: &lt;**inputType**&gt;, param1: string, param2: string ,...): string | number | React.Component | Array&lt;React.Component&gt;
+
+- `content` is content to filter / format given as child through `<Lens />`.
+- Other repeatable parameters comes from `filter` props of `<Lens />`.
+
+  For example;
+  ```javascript
+  <Lens filter="yourfilter : param1 : param2">{content}</Lens>
+  ```
+
+### An Example to Create Lens - `repeater`
+
+Let's make a filter that repeats given content given param times.
+
+```javascript
+// File: lens-repeater.js
+import { make } from 'react-lens';
+
+make('repeater', 'string', (content, times = 2) => (
+  let result = '';
+  for(let i = 0; i < times; i++) {
+    result += content;
+  }
+  return result;
+));
+```
+```javascript
+// File: example.js
+import React form 'react';
+import ReactDOM form 'react-dom';
+import Lens from 'react-lens';
+import './lens-repeater';
+
+ReactDOM.render(
+  <div>
+    <h3>Repeater Lens Example</h3>
+    <Lens filter="repeater : 3">Hello</Lens>
+  </div>,
+  document.getElementById('dom_id')
+);
+```
+It will prompt "HelloHelloHello".
+
+By the way, have to say that, in `example.js` we imported `./lens-repeater`. You don't have to import our lenses in each file which you use that lens. It's enough to import once in any parent or root file.
 
 Development / Contributing
 ==========================
