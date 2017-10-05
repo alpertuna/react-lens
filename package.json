@@ -55,16 +55,16 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.0",
     "eslint-plugin-react": "^6.1.2",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
     "dateformat": "^1.0.12",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "react": "^0.14 || ^15.0.0-rc || ^15.0"
+    "react": "^0.14 || ^15.0.0-rc || ^15.0 || ^16.0"
   }
 }
